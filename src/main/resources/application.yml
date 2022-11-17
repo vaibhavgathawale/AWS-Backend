@@ -1,0 +1,51 @@
+server:
+  port: 5003
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      register-with-eureka: false
+      fetch-registry: false
+    instance:
+      preferIpAddress: true
+
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    name: company-service
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/company
+    username: root
+    password: pass@word1
+
+api:
+  add-company:
+    description: 'REST API to add company'
+    notes: 'This API is used to register a company.'
+  get-all-company:
+    description: 'REST API to get all companies'
+    notes: 'This API is used to get all companies.'
+  get-company-by-company-code:
+    description: 'REST API to get company by code'
+    notes: 'This API is used to get company by company code.'
+  is-company-present:
+    description: 'REST API to check company exists'
+    notes: 'This API is used to check whether company exists by company code or not.'
+  delete-company:
+    description: 'REST API to delete company'
+    notes: 'This API is used to delete company by id.'
